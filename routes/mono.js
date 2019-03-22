@@ -24,6 +24,7 @@ function getItem(req, res) {
 
 function putItem(req, res) {
     let items = monoCollection.find({key: req.params.id});
+    let item
     if (items.length == 0) {
         // der gesamte Body des Requests wird als "value" abgespeichert
         item = monoCollection.insert({key: req.params.id, value: req.body});
@@ -38,6 +39,7 @@ function putItem(req, res) {
 
 function delItem(req, res) {
     let items = monoCollection.find({key: req.params.id});
+    let item;
     if (items.length == 0) {
         res.status(404).end();
     } else {
